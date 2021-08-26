@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mustacheTest</title>
+</head>
+
+<body>
+
+
+
+
+  <script src="/xuni/bundle.js"></script>
+  <script>
+    // let str = ` <div>
+    //               <h1>我是swx</h1>
+    //               {{#students}}
+    //               <li>
+    //                 学生{{item.name}}的爱好是
+    //                 <ol>
+    //                   {{#item.hobbies}}
+    //                   <li>
+    //                     {{.}}
+    //                   </li>
+    //                   {{/item.hobbies}}
+    //                 </ol>
+    //               </li>
+    //               {{/students}}
+    //             </div>`;
+    // let data = {
+    //   students: [{
+    //       'name': "小明",
+    //       'hobbies': ['游泳', '健身']
+    //     },
+    //     {
+    //       'name': "小工",
+    //       'hobbies': ['篮球', '足球']
+    //     },
+    //     {
+    //       'name': "校长",
+    //       'hobbies': ['羽毛球', '吃饭', '睡觉']
+    //     }
+    //   ]
+    // }
+
+
+    let str = `我是{{zq}},是{{age.num}}岁`
+    let data = {
+      zq: "swx",
+      age: {
+        num: 23
+      }
+    }
+
+
+    mustache_TempalateEnhine.render(str, data)
+  </script>
+</body>
+
+</html>
