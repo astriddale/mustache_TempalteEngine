@@ -14,7 +14,7 @@ export default function parseArray(token, data) {
   let resultStr = '';
   // 对传过来的数据和数组进行lookup函数处理，返回处理后的数据
   let vData = lookup(data, token[1]);
-  // console.log(vData);
+  console.log(vData);
 
   for (let i = 0; i < vData.length; i++) {
     // 这里使用...扩展预算符来处理最后一层{{.}}的情况，将vData[i]里的参数依次放入一个数组当中，并且使整个vData[i]成为‘.’的属性
