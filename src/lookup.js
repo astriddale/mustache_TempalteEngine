@@ -5,8 +5,11 @@ age:{
 }
 */
 export default function lookup(data, ctt) {
+  // console.log(ctt)
+  // debugger
   // 判断传过来的数据格式是否存在‘.’
-  if (ctt.indexOf('.') != -1) {
+  // 做两层判断的原因是最里层的循环得数据格式有可能为‘.’，这时候就不能进行切割而是直接返回，所以ctt本身不能为‘.’
+  if (ctt.indexOf('.') != -1 && ctt != '.') {
     // 设置一个临时变量保存data数据，用于周转，一层一层找下去（不会改变data数据格式）
     let temp = data;
     // 如果存在则转换为数组格式

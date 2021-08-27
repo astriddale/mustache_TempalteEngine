@@ -11,52 +11,49 @@
 <body>
 
 
-
+  <div id="app"></div>
 
   <script src="/xuni/bundle.js"></script>
   <script>
-    // let str = ` <div>
-    //               <h1>我是swx</h1>
-    //               {{#students}}
-    //               <li>
-    //                 学生{{item.name}}的爱好是
-    //                 <ol>
-    //                   {{#item.hobbies}}
-    //                   <li>
-    //                     {{.}}
-    //                   </li>
-    //                   {{/item.hobbies}}
-    //                 </ol>
-    //               </li>
-    //               {{/students}}
-    //             </div>`;
-    // let data = {
-    //   students: [{
-    //       'name': "小明",
-    //       'hobbies': ['游泳', '健身']
-    //     },
-    //     {
-    //       'name': "小工",
-    //       'hobbies': ['篮球', '足球']
-    //     },
-    //     {
-    //       'name': "校长",
-    //       'hobbies': ['羽毛球', '吃饭', '睡觉']
-    //     }
-    //   ]
-    // }
-
-
-    let str = `我是{{zq}},是{{age.num}}岁`
+    let str = ` <div class="title">
+                  <h1>我是{{myName}}</h1>
+                  {{#students}}
+                    学生{{name}}的爱好是
+                    <ul>
+                      {{#hobbies}}
+                      <li>
+                        {{.}}
+                      </li>
+                      {{/hobbies}}
+                    </ul>
+                  {{/students}}
+                </div>`;
     let data = {
-      zq: "swx",
-      age: {
-        num: 23
-      }
+      myName: 'swx',
+      students: [{
+          'name': "小明",
+          'hobbies': ['游泳', '健身']
+        },
+        {
+          'name': "小工",
+          'hobbies': ['篮球', '足球']
+        },
+        {
+          'name': "校长",
+          'hobbies': ['羽毛球', '吃饭', '睡觉']
+        }
+      ]
     }
 
-
-    mustache_TempalateEnhine.render(str, data)
+    let app = document.getElementById("app")
+    app.innerHTML = mustache_TempalateEnhine.render(str, data);
+    // let str = `我是{{zq}},是{{age.num}}岁`
+    // let data = {
+    //   zq: "swx",
+    //   age: {
+    //     num: 23
+    //   }
+    // }
   </script>
 </body>
 
