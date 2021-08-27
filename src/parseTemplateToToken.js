@@ -12,12 +12,32 @@ export default function parseTemplateToToken(tempalteStr) {
   while (!scanner.eos()) {
     // 调用scnner的scanUtil方法并保存为words
     words = scanner.scanUtil("{{")
-
     // 判断scanUtil不为空时以数组形式push进tokens的数组
     if (words != '') {
-      tokens.push(["text", words])
+      // 定义一个变量用来接收删除空格后的字符串
+      let _words = '';
+      // _words = _words + '<'
+      let isInner = false;
+      // 遍历words字符串
+      for (let i = 0; i < words.length; i++) {
+        // 在这里判断空格是否在<内部>，是则保存，不是则删除
+        if (words[i] == '<') {
+          isInner = true;
+        } else if (words[i] == '>') {
+          isInner = false;
+        }
+        // 如果不是空格，则进行拼串；是空格则判断是否在内部，在则保存空格
+        if (!/\s/.test(words[i])) {
+          _words += words[i]
+        } else {
+          if (isInner) {
+            _words += ' '
+          }
+        }
+      }
+      // console.log(_words)
+      tokens.push(["text", _words])
     }
-
     scanner.scan("{{")
 
     // 调用scnner的scanUtil方法并保存为words
@@ -33,7 +53,6 @@ export default function parseTemplateToToken(tempalteStr) {
         tokens.push(["name", words])
       }
     }
-
     scanner.scan("}}")
   }
   // console.log(tokens)

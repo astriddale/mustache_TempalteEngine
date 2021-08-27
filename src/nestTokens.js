@@ -1,8 +1,6 @@
 // 折叠tokens的函数，将传过来的数组以栈的思想折叠为多维数组
 export default function nestTokens(tokens) {
-  console.log(tokens)
-
-
+  // console.log(tokens)
   // 定义一个变量保存最后返回的值:结果数组
   let nestTokens = [];
   // 收集器，指向的nestTokens的内存地址，在switch中指向会改变
@@ -42,7 +40,7 @@ export default function nestTokens(tokens) {
         // 出栈，pop方法会返回刚刚弹出的那项
         const sections_pop = sections.pop(token);
         collector = sections.length > 0 ? sections[sections.length - 1][2] : nestTokens;
-        collector.push(token)
+        // collector.push(token)
         // console.log("////---", collector)
         // debugger
         break;

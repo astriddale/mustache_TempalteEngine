@@ -3,12 +3,13 @@
  * 使得token能够读取data中的数据
  */
 import lookup from './lookup';
+import parseArray from './parseArray';
 
-export default function parseDom(nestTokens, data) {
+export default function parseDom(tokens, data) {
   let resultStr = '';
 
-  for (let i = 0; i < nestTokens.length; i++) {
-    let token = nestTokens[i];
+  for (let i = 0; i < tokens.length; i++) {
+    let token = tokens[i];
     // 当token[0]为text时，则将resultStr转为token[1]的值
     if (token[0] == 'text') {
       resultStr += token[1];
@@ -17,7 +18,7 @@ export default function parseDom(nestTokens, data) {
       resultStr += lookup(data, token[1]);
       // 当token[0]为#时，则调用递归的函数
     } else if (token[0] == '#') {
-
+      resultStr += parseArray(token, data)
     }
   }
   // 返回处理后数据以字符串形式返回
